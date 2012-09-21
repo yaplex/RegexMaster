@@ -1,0 +1,667 @@
+﻿<ribbon:RibbonWindow
+	x:Class="RegexMaster.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
+	Title="Regex Master 2.0 - http://www.yaplex.com/"
+	x:Name="RibbonWindow"
+	Width="860"
+	Height="480"
+	Loaded="RibbonWindow_Loaded"
+	WindowStartupLocation='CenterScreen'
+	xmlns:WinForms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+	Icon="/RegexMaster;component/Images/application-icon-128.png">
+
+	<Grid
+		x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="Auto" />
+			<RowDefinition
+				Height="30"
+				MaxHeight="55"
+				MinHeight="30" />
+			<RowDefinition
+				Height="5" />
+			<RowDefinition
+				Height="3*" />
+			<RowDefinition
+				Height="5" />
+			<RowDefinition
+				Height="2*" />
+
+		</Grid.RowDefinitions>
+
+		<Grid.Resources>
+			<Style
+				x:Key="TextFields"
+				TargetType="TextBox">
+				<Setter
+					Property="Margin"
+					Value="0"></Setter>
+			</Style>
+		</Grid.Resources>
+
+		<ribbon:Ribbon
+			x:Name="Ribbon">
+			<ribbon:Ribbon.ApplicationMenu>
+				<ribbon:RibbonApplicationMenu
+					SmallImageSource="Images\tools-16.png">
+					<ribbon:RibbonApplicationMenuItem
+						Header="Exit"
+						x:Name="MenuItem1"
+						ImageSource="Images\application-exit-32.png"
+						Click="Application_Exit" />
+				</ribbon:RibbonApplicationMenu>
+			</ribbon:Ribbon.ApplicationMenu>
+			<ribbon:RibbonTab
+				x:Name="HomeTab"
+				Header="Home">
+				<ribbon:RibbonGroup
+					x:Name="Group1"
+					Header="">
+					<ribbon:RibbonButton
+						x:Name="Button1"
+						LargeImageSource="Images\application-exit-32.png"
+						Label="Exit"
+						Click="Application_Exit" />
+
+					<ribbon:RibbonButton
+						x:Name="Button2"
+						SmallImageSource="Images\clear-16.png"
+						Label="Clear fields"
+						ToolTip="Clears all text fields"
+						Click="ClearTextFields_Click" />
+					<ribbon:RibbonButton
+						SmallImageSource="Images\reload-16.png"
+						Label="Reload"
+						ToolTip="Runs regex agains text again"
+						Click="MenuDoRegex_Click" />
+				</ribbon:RibbonGroup>
+				<ribbon:RibbonGroup
+					Header="Settings">
+					<ribbon:RibbonCheckBox
+						x:Name="ignoreCaseCheckBox"
+						Label="Ignore case"
+						IsChecked="True" />
+					<ribbon:RibbonCheckBox
+						x:Name="isMultiline"
+						Label="Is Multiline"
+						IsChecked="True" />
+				</ribbon:RibbonGroup>
+
+			</ribbon:RibbonTab>
+
+			<ribbon:RibbonTab
+				Header='Insert'>
+
+				<ribbon:RibbonTab.Resources>
+
+					<Style
+						TargetType='ribbon:RibbonButton'
+						BasedOn='{StaticResource {x:Type ribbon:RibbonButton}}'>
+						<Setter
+							Property='Command'
+							Value='Replace' />
+						<Setter
+							Property='CommandTarget'
+							Value='{Binding ElementName=txtRegexExpression, BindsDirectlyToSource=True}' />
+						<Setter
+							Property='ToolTipTitle'
+							Value='{Binding CommandParameter, RelativeSource={RelativeSource Self}}' />
+
+						<Style.Triggers>
+							<Trigger
+								Property='CommandParameter'
+								Value='{x:Null}'>
+								<Setter
+									Property='Command'
+									Value='NotACommand' />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+
+				</ribbon:RibbonTab.Resources>
+
+				<ribbon:RibbonGroup
+					Header='Escapes'>
+
+					<ribbon:RibbonButton
+						Label='\a'
+						CommandParameter='\a'
+						ToolTipDescription='Matches a bell character, \u0007.'
+						ToolTipFooterTitle='Pattern \a matches'
+						ToolTipFooterDescription='"\u0007" in "Error!" + &apos;\u0007&apos;' />
+					<ribbon:RibbonButton
+						Label='\b'
+						CommandParameter='\b'
+						ToolTipDescription='In a character class, matches a backspace, \u0008.'
+						ToolTipFooterTitle='Pattern [\b]{3,} matches'
+						ToolTipFooterDescription='"\b\b\b\b" in "\b\b\b\b"' />
+					<ribbon:RibbonButton
+						Label='\t'
+						CommandParameter='\t'
+						ToolTipDescription='Matches a tab, \u0009.'
+						ToolTipFooterTitle='Pattern (\w+)\t matches'
+						ToolTipFooterDescription='"item1\t", "item2\t" in "item1\titem2\t"' />
+					<ribbon:RibbonButton
+						Label='\r'
+						CommandParameter='\r'
+						ToolTipDescription='Matches a carriage return, \u000D. (\r is not equivalent to the newline character, \n.)'
+						ToolTipFooterTitle='Pattern \r\n(\w+) matches'
+						ToolTipFooterDescription='"\r\nThese" in "\r\nThese are\ntwo lines."' />
+					<ribbon:RibbonButton
+						Label='\v'
+						CommandParameter='\v'
+						ToolTipDescription='Matches a vertical tab, \u000B.'
+						ToolTipFooterTitle='Pattern [\v]{2,} matches'
+						ToolTipFooterDescription='"\v\v\v" in "\v\v\v"' />
+					<ribbon:RibbonButton
+						Label='\f'
+						CommandParameter='\f'
+						ToolTipDescription='Matches a form feed, \u000C.'
+						ToolTipFooterTitle='Pattern [\f]{2,} matches'
+						ToolTipFooterDescription='"\f\f\f" in "\f\f\f"' />
+					<ribbon:RibbonButton
+						Label='\n'
+						CommandParameter='\n'
+						ToolTipDescription='Matches a new line, \u000A.'
+						ToolTipFooterTitle='Pattern \r\n(\w+) matches'
+						ToolTipFooterDescription='"\r\nThese" in "\r\nThese are\ntwo lines."' />
+					<ribbon:RibbonButton
+						Label='\e'
+						CommandParameter='\e'
+						ToolTipDescription='Matches an escape, \u001B.'
+						ToolTipFooterTitle='Pattern \e matches'
+						ToolTipFooterDescription='"\x001B" in "\x001B"' />
+
+				</ribbon:RibbonGroup>
+
+				<ribbon:RibbonGroup
+					Header='Character Classes'>
+
+					<ribbon:RibbonButton
+						Label='Word'
+						CommandParameter='\w'
+						ToolTipDescription='Matches any word character.'
+						ToolTipFooterTitle='Pattern \w matches'
+						ToolTipFooterDescription='"I", "D", "A", "1", "3" in "ID A1.3"' />
+					<ribbon:RibbonButton
+						Label='Space'
+						CommandParameter='\s'
+						ToolTipDescription='Matches any white-space character.'
+						ToolTipFooterTitle='Pattern \w\s matches'
+						ToolTipFooterDescription='"D " in "ID A1.3"' />
+					<ribbon:RibbonButton
+						Label='Digit'
+						CommandParameter='\d'
+						ToolTipDescription='Matches any decimal digit.'
+						ToolTipFooterTitle='Pattern \d matches'
+						ToolTipFooterDescription='"4" in "4 = IV"' />
+					<ribbon:RibbonButton
+						Label='Non word'
+						CommandParameter='\W'
+						ToolTipDescription='Matches any non-word character.'
+						ToolTipFooterTitle='Pattern \W matches'
+						ToolTipFooterDescription='" ", "." in "ID A1.3"' />
+					<ribbon:RibbonButton
+						Label='Non space'
+						CommandParameter='\S'
+						ToolTipDescription='Matches any non-white-space character.'
+						ToolTipFooterTitle='Pattern \s\S matches'
+						ToolTipFooterDescription='" _" in "int __ctr"' />
+					<ribbon:RibbonButton
+						Label='Non digit'
+						CommandParameter='\D'
+						ToolTipDescription='Matches any non-decimal digit.'
+						ToolTipFooterTitle='Pattern \D matches'
+						ToolTipFooterDescription='" ", "=", " ", "I", "V" in "4 = IV"' />
+					<ribbon:RibbonButton
+						Label='Any of'
+						CommandParameter='[]'
+						ToolTipTitle='[character_group]'
+						ToolTipDescription='Matches any single character in character_group. By default, the match is case-sensitive.'
+						ToolTipFooterTitle='Pattern [ae] matches'
+						ToolTipFooterDescription='"a" in "gray"&#x0a;"a", "e" in "lane"' />
+					<ribbon:RibbonButton
+						Label='None of'
+						CommandParameter='[^]'
+						ToolTipTitle='[^character_group]'
+						ToolTipDescription='Negation: Matches any single character that is not in character_group. By default, characters in character_group are case-sensitive.'
+						ToolTipFooterTitle='Pattern [^aei] matches'
+						ToolTipFooterDescription='"r", "g", "n" in "reign"' />
+					<ribbon:RibbonButton
+						Label='Range'
+						CommandParameter='[-]'
+						ToolTipTitle='[first-last]'
+						ToolTipDescription='Character range: Matches any single character in the range from first to last.'
+						ToolTipFooterTitle='Pattern [A-Z] matches'
+						ToolTipFooterDescription='"A", "B" in "AB123"' />
+					<ribbon:RibbonButton
+						Label='Any'
+						CommandParameter='.'
+						ToolTipTitle='. (dot)'
+						ToolTipDescription='Wildcard: Matches any single character except \n.'
+						ToolTipFooterTitle='Pattern a.e matches'
+						ToolTipFooterDescription='"ave" in "nave"&#x0a;"ate" in "water"' />
+					<ribbon:RibbonButton
+						Label='\p{}'
+						CommandParameter='\p{}'
+						ToolTipTitle='\p{name}'
+						ToolTipDescription='Matches any single character in the Unicode general category or named block specified by name.'
+						ToolTipFooterTitle='Pattern \p{Lu} matches'
+						ToolTipFooterDescription='"C", "L" in "City Lights"' />
+					<ribbon:RibbonButton
+						Label='\P{}'
+						CommandParameter='\P{}'
+						ToolTipTitle='\P{name}'
+						ToolTipDescription='Matches any single character that is not in the Unicode general category or named block specified by name.'
+						ToolTipFooterTitle='Pattern \P{Lu} matches'
+						ToolTipFooterDescription='"i", "t", "y" in "City"' />
+
+				</ribbon:RibbonGroup>
+
+				<ribbon:RibbonGroup
+					Header='Anchors'>
+
+					<ribbon:RibbonButton
+						Label='^'
+						CommandParameter='^'
+						ToolTipDescription='The match must start at the beginning of the string or line.'
+						ToolTipFooterTitle='Pattern ^\d{3} matches'
+						ToolTipFooterDescription='"901-" in &#x0a;"901-333-"' />
+					<ribbon:RibbonButton
+						Label='$'
+						CommandParameter='$'
+						ToolTipDescription='The match must occur at the end of the string or before \n at the end of the line or string.'
+						ToolTipFooterTitle='Pattern -\d{3}$ matches'
+						ToolTipFooterDescription='"-333" in &#x0a;"-901-333"' />
+					<ribbon:RibbonButton
+						Label='\A'
+						CommandParameter='\A'
+						ToolTipDescription='The match must occur at the start of the string.'
+						ToolTipFooterTitle='Pattern \A\d{3} matches'
+						ToolTipFooterDescription='"901" in &#x0a;"901-333-"' />
+					<ribbon:RibbonButton
+						Label='\z'
+						CommandParameter='\z'
+						ToolTipDescription='The match must occur at the end of the string.'
+						ToolTipFooterTitle='Pattern -\d{3}\z matches'
+						ToolTipFooterDescription='"-333" in&#x0a;"-901-333"' />
+					<ribbon:RibbonButton
+						Label='\Z'
+						CommandParameter='\Z'
+						ToolTipDescription='The match must occur at the end of the string or before \n at the end of the string.'
+						ToolTipFooterTitle='Pattern -\d{3}\Z matches'
+						ToolTipFooterDescription='"-333" in&#x0a;"-901-333"' />
+					<ribbon:RibbonButton
+						Label='\G'
+						CommandParameter='\G'
+						ToolTipDescription='The match must occur at the point where the previous match ended.'
+						ToolTipFooterTitle='Pattern \G\(\d\) matches'
+						ToolTipFooterDescription='"(1)", "(3)", "(5)" in "(1)(3)(5)[7](9)"' />
+					<ribbon:RibbonButton
+						Label='\b'
+						CommandParameter='\b'
+						ToolTipDescription='The match must occur on a boundary between a \w (alphanumeric) and a \W (nonalphanumeric) character.'
+						ToolTipFooterTitle='Pattern \b\w+\s\w+\b matches'
+						ToolTipFooterDescription='"them them" in "them theme them them"' />
+					<ribbon:RibbonButton
+						Label='\B'
+						CommandParameter='\B'
+						ToolTipDescription='The match must not occur on a \b boundary.'
+						ToolTipFooterTitle='Pattern \Bend\w*\b matches'
+						ToolTipFooterDescription='"ends", "ender" in "end sends endure lender"' />
+
+				</ribbon:RibbonGroup>
+
+				<ribbon:RibbonGroup
+					Header='Grouping'>
+
+					<ribbon:RibbonButton
+						Label='()'
+						CommandParameter='()'
+						ToolTipTitle='(subexpression)'
+						ToolTipDescription='Captures the matched subexpression and assigns it a zero-based ordinal number.'
+						ToolTipFooterTitle='Pattern (\w)\1 matches'
+						ToolTipFooterDescription='"ee" in "deep"' />
+					<ribbon:RibbonButton
+						Label='(?:)'
+						CommandParameter='(?:)'
+						ToolTipTitle='(?:subexpression)'
+						ToolTipDescription='Defines a noncapturing group.'
+						ToolTipFooterTitle='Pattern Write(?:Line)? matches'
+						ToolTipFooterDescription='"WriteLine" in "Console.WriteLine()"' />
+					<ribbon:RibbonButton
+						Label='(?!)'
+						CommandParameter='(?!subexpression)'
+						ToolTipTitle='(?!subexpression)'
+						ToolTipDescription='Zero-width negative lookahead assertion.'
+						ToolTipFooterTitle='Pattern \b(?!un)\w+\b matches'
+						ToolTipFooterDescription='"sure", "used" in "unsure sure unity used"' />
+					<ribbon:RibbonButton
+						Label='(?&lt;x&gt;)'
+						CommandParameter='(?&lt;name&gt;)'
+						ToolTipTitle='(?&lt;name&gt;subexpression)'
+						ToolTipDescription='Captures the matched subexpression into a named group.'
+						ToolTipFooterTitle='Pattern (?&lt;double&gt;\w)\k&lt;double&gt; matches'
+						ToolTipFooterDescription='"ee" in "deep"' />
+					<ribbon:RibbonButton
+						Label='(?&lt;x-y&gt;)'
+						CommandParameter='(?&lt;name1-name2&gt;subexpression)'
+						ToolTipTitle='(?&lt;name1-name2&gt;)'
+						ToolTipDescription='Defines a balancing group definition.'
+						ToolTipFooterTitle='Pattern (((?&apos;Open&apos;\()[^\(\)]*)+((?&apos;Close-Open&apos;\))[^\(\)]*)+)*(?(Open)(?!))$ matches'
+						ToolTipFooterDescription='"((1-3)*(3-1))" in "3+2^((1-3)*(3-1))"' />
+					<ribbon:RibbonButton
+						Label='(?imnsx:)'
+						CommandParameter='(?imnsx:)'
+						ToolTipTitle='(?imnsx-imnsx: subexpression)'
+						ToolTipDescription='Applies or disables the specified options within subexpression.'
+						ToolTipFooterTitle='Pattern A\d{2}(?i:\w+)\b matches'
+						ToolTipFooterDescription='"A12xl", "A12XL" in "A12xl A12XL a12xl"' />
+					<ribbon:RibbonButton
+						Label='(?=)'
+						CommandParameter='(?=subexpression)'
+						ToolTipTitle='(?=subexpression)'
+						ToolTipDescription='Zero-width positive lookahead assertion.'
+						ToolTipFooterTitle='Pattern \w+(?=\.) matches'
+						ToolTipFooterDescription='"is", "ran", and "out" in "He is. The dog ran. The sun is out."' />
+					<ribbon:RibbonButton
+						Label='(?&lt;=)'
+						CommandParameter='(?&lt;=)'
+						ToolTipTitle='(?&lt;= subexpression)'
+						ToolTipDescription='Zero-width positive lookbehind assertion.'
+						ToolTipFooterTitle='Pattern (?&lt;=19)\d{2}\b matches'
+						ToolTipFooterDescription='"99", "50", "05" in "1851 1999 1950 1905 2003"' />
+					<ribbon:RibbonButton
+						Label='(?&lt;!)'
+						CommandParameter='(?&lt;!)'
+						ToolTipTitle='(?&lt;!subexpression)'
+						ToolTipDescription='Zero-width negative lookbehind assertion.'
+						ToolTipFooterTitle='Pattern (?&lt;!19)\d{2}\b matches'
+						ToolTipFooterDescription='"51", "03" in "1851 1999 1950 1905 2003"' />
+					<ribbon:RibbonButton
+						Label='(?&gt;)'
+						CommandParameter='(?&gt;subexpression)'
+						ToolTipTitle='(?&gt;subexpression)'
+						ToolTipDescription='Nonbacktracking (or "greedy") subexpression.'
+						ToolTipFooterTitle='Pattern [13579](?&gt;A+B+) matches'
+						ToolTipFooterDescription='"1ABB", "3ABB", and "5AB" in "1ABB 3ABBC 5AB 5AC"' />
+
+				</ribbon:RibbonGroup>
+
+				<ribbon:RibbonGroup
+					Header='Quantifiers'>
+
+					<ribbon:RibbonButton
+						Label='*'
+						CommandParameter='*'
+						ToolTipDescription='Matches the previous element zero or more times.'
+						ToolTipFooterTitle='Pattern \d*\.\d matches'
+						ToolTipFooterDescription='".0", "19.9", "219.9"' />
+					<ribbon:RibbonButton
+						Label='+'
+						CommandParameter='+'
+						ToolTipDescription='Matches the previous element one or more times.'
+						ToolTipFooterTitle='Pattern "be+" matches'
+						ToolTipFooterDescription='"bee" in "been", "be" in "bent"' />
+					<ribbon:RibbonButton
+						Label='?'
+						CommandParameter='?'
+						ToolTipDescription='Matches the previous element zero or one time.'
+						ToolTipFooterTitle='Pattern "rai?n" matches'
+						ToolTipFooterDescription='"ran", "rain"' />
+					<ribbon:RibbonButton
+						Label='{}{n}'
+						CommandParameter='{}{n}'
+						ToolTipDescription='Matches the previous element exactly n times.'
+						ToolTipFooterTitle='Pattern ",\d{3}" matches'
+						ToolTipFooterDescription='",043" in "1,043.6", ",876", ",543", and ",210" in "9,876,543,210"' />
+					<ribbon:RibbonButton
+						Label='{}{n,}'
+						CommandParameter='{}{n,}'
+						ToolTipDescription='Matches the previous element at least n times.'
+						ToolTipFooterTitle='Pattern "\d{2,}" matches'
+						ToolTipFooterDescription='"166", "29", "1930"' />
+					<ribbon:RibbonButton
+						Label='{}{n,m}'
+						CommandParameter='{}{n,m}'
+						ToolTipDescription='Matches the previous element at least n times, but no more than m times.'
+						ToolTipFooterTitle='Pattern "\d{3,5}" matches'
+						ToolTipFooterDescription='"166", "17668"&#x0a;"19302" in "193024"' />
+					<ribbon:RibbonButton
+						Label='*?'
+						CommandParameter='*?'
+						ToolTipDescription='Matches the previous element zero or more times, but as few times as possible.'
+						ToolTipFooterTitle='Pattern \d*?\.\d matches'
+						ToolTipFooterDescription='".0", "19.9", "219.9"' />
+					<ribbon:RibbonButton
+						Label='+?'
+						CommandParameter='+?'
+						ToolTipDescription='Matches the previous element one or more times, but as few times as possible.'
+						ToolTipFooterTitle='Pattern "be+?" matches'
+						ToolTipFooterDescription='"be" in "been", "be" in "bent"' />
+					<ribbon:RibbonButton
+						Label='??'
+						CommandParameter='??'
+						ToolTipDescription='Matches the previous element zero or one time, but as few times as possible.'
+						ToolTipFooterTitle='Pattern "rai??n" matches'
+						ToolTipFooterDescription='"ran", "rain"' />
+					<ribbon:RibbonButton
+						Label='{}{n}?'
+						CommandParameter='{}{n}?'
+						ToolTipDescription='Matches the preceding element exactly n times.'
+						ToolTipFooterTitle='Pattern ",\d{3}?" matches'
+						ToolTipFooterDescription='",043" in "1,043.6", ",876", ",543", and ",210" in "9,876,543,210"' />
+					<ribbon:RibbonButton
+						Label='{}{n,}?'
+						CommandParameter='{}{n,}?'
+						ToolTipDescription='Matches the previous element at least n times, but as few times as possible.'
+						ToolTipFooterTitle='Pattern "\d{2,}?" matches'
+						ToolTipFooterDescription='"166", "29", "1930"' />
+					<ribbon:RibbonButton
+						Label='{}{n,m}?'
+						CommandParameter='{}{n,m}?'
+						ToolTipDescription='Matches the previous element between n and m times, but as few times as possible.'
+						ToolTipFooterTitle='Pattern "\d{3,5}?" matches'
+						ToolTipFooterDescription='"166", "17668"$#x0a;"193", "024" in "193024"' />
+
+				</ribbon:RibbonGroup>
+
+				<ribbon:RibbonGroup
+					Header='Substitutions'>
+
+					<ribbon:RibbonButton
+						Label='$'
+						CommandParameter='$1'
+						ToolTipTitle='$number'
+						ToolTipDescription='Substitutes the substring matched by group number.'
+						ToolTipFooterTitle='Replacement $3$2$1 with pattern \b(\w+)(\s)(\w+)\b'
+						ToolTipFooterDescription='Result "two one" on input "one two"' />
+					<ribbon:RibbonButton
+						Label='${}'
+						CommandParameter='${}'
+						ToolTipTitle='${name}'
+						ToolTipDescription='Substitutes the substring matched by the named group name.'
+						ToolTipFooterTitle='Replacement ${word2}${word1} with pattern \b(?&lt;word1&gt;\w+)(\s)(?&lt;word2&gt;\w+)\b'
+						ToolTipFooterDescription='Result "two one" on input "one two"' />
+					<ribbon:RibbonButton
+						Label='$$'
+						CommandParameter='$$'
+						ToolTipDescription='Substitutes a literal "$".'
+						ToolTipFooterTitle='Replacement $$$1 with pattern \b(\d+)\s?USD'
+						ToolTipFooterDescription='Result "$103" on input "103 USD"' />
+					<ribbon:RibbonButton
+						Label='$&amp;'
+						CommandParameter='$&amp;'
+						ToolTipDescription='Substitutes a copy of the whole match.'
+						ToolTipFooterTitle='Replacement **$&amp; with pattern (\$*(\d*(\.+\d+)?){1})'
+						ToolTipFooterDescription='Result "**$1.30**" on input "$1.30"' />
+					<ribbon:RibbonButton
+						Label='$&#x60;'
+						CommandParameter='$&#x60;'
+						ToolTipDescription='Substitutes all the text of the input string before the match.'
+						ToolTipFooterTitle='Replacement $&#x60; with pattern B+'
+						ToolTipFooterDescription='Result "AAAACC" on input "AABBCC"' />
+					<ribbon:RibbonButton
+						Label="$'"
+						CommandParameter="$'"
+						ToolTipDescription='Substitutes all the text of the input string after the match.'
+						ToolTipFooterTitle='Replacement $&apos; with pattern B+'
+						ToolTipFooterDescription='Result "AACCCC" on input "AABBCC"' />
+					<ribbon:RibbonButton
+						Label='$+'
+						CommandParameter='$+'
+						ToolTipDescription='Substitutes the last group that was captured.'
+						ToolTipFooterTitle='Replacement $+ with pattern B+(C+)'
+						ToolTipFooterDescription='Result AACCDD on input "AABBCCDD"' />
+					<ribbon:RibbonButton
+						Label='$_'
+						CommandParameter='$_'
+						ToolTipDescription='Substitutes the entire input string.'
+						ToolTipFooterTitle='Replacement $_ with pattern B+'
+						ToolTipFooterDescription='Result "AAAABBCCCC" on input "AABBCC"' />
+
+				</ribbon:RibbonGroup>
+
+				<ribbon:RibbonGroup
+					Header='Miscellaneous'>
+
+					<ribbon:RibbonButton
+						Label='(?(exp)|)'
+						CommandParameter='(?()|)'
+						ToolTipTitle='(?(expression)yes|no)'
+						ToolTipDescription='Matches yes if expression matches; otherwise, matches the optional no part. expression is interpreted as a zero-width assertion.'
+						ToolTipFooterTitle='Pattern (?(A)A\d{2}\b|\b\d{3}\b) matches'
+						ToolTipFooterDescription='"A10", "910" in "A10 C103 910"' />
+					<ribbon:RibbonButton
+						Label='(?(name)|)'
+						CommandParameter='(?()|)'
+						ToolTipTitle='(?(name)yes|no)'
+						ToolTipDescription=''
+						ToolTipFooterTitle='Pattern (?&lt;quoted&gt;")?(?(quoted).+?"|\S+\s) matches'
+						ToolTipFooterDescription='Dogs.jpg, "Yiska playing.jpg" in "Dogs.jpg "Yiska playing.jpg""' />
+					<ribbon:RibbonButton
+						Label='(?imnsx)'
+						CommandParameter='(?imnsx)'
+						ToolTipTitle='(?imnsx-imnsx)'
+						ToolTipDescription='Sets or disables options such as case insensitivity in the middle of a pattern.'
+						ToolTipFooterTitle='Example'
+						ToolTipFooterDescription='\bA(?i)b\w+\b matches "ABA", "Able" in "ABA Able Act"' />
+					<ribbon:RibbonButton
+						Label='|'
+						CommandParameter='|'
+						ToolTipDescription='Matches any one element separated by the vertical bar (|) character.'
+						ToolTipFooterTitle='Pattern th(e|is|at) matches'
+						ToolTipFooterDescription='"the", "this" in "this is the day. "' />
+					<ribbon:RibbonButton
+						Label='(?#)'
+						CommandParameter='(?#)'
+						ToolTipTitle='(?#comment)'
+						ToolTipDescription='Inline comment. The comment ends at the first closing parenthesis.'
+						ToolTipFooterTitle='Example'
+						ToolTipFooterDescription='\bA(?#Matches words starting with A)\w+\b' />
+					<ribbon:RibbonButton
+						Label='#'
+						CommandParameter='#'
+						ToolTipTitle='# [to end of line]'
+						ToolTipDescription='X-mode comment. The comment starts at an unescaped # and continues to the end of the line.'
+						ToolTipFooterTitle='Example'
+						ToolTipFooterDescription='(?x)\bA\w+\b#Matches words starting with A' />
+					<ribbon:RibbonButton
+						Label='\1'
+						CommandParameter='\1'
+						ToolTipTitle='\number'
+						ToolTipDescription='Backreference. Matches the value of a numbered subexpression.'
+						ToolTipFooterTitle='Pattern (\w)\1 matches'
+						ToolTipFooterDescription='"ee" in "seek"' />
+					<ribbon:RibbonButton
+						Label='\k'
+						CommandParameter='\k'
+						ToolTipTitle='\k&lt;name&gt;'
+						ToolTipDescription='Named backreference. Matches the value of a named expression.'
+						ToolTipFooterTitle='Pattern (?&lt;char&gt;\w)\k&lt;char&gt; matches'
+						ToolTipFooterDescription='"ee" in "seek"' />
+
+				</ribbon:RibbonGroup>
+
+			</ribbon:RibbonTab>
+
+			<ribbon:RibbonTab
+				Header="About"
+				Name="AboutTab">
+				<ribbon:RibbonGroup>
+					<Label
+						Content="Regex Master 2.0"
+						HorizontalAlignment="Left"
+						FontWeight="Bold"
+						Padding="0 30 0 10" />
+				</ribbon:RibbonGroup>
+				<ribbon:RibbonGroup>
+
+					<Label
+						Content="Design and development: Yaplex"
+						Height="28"
+						HorizontalAlignment="Left" />
+					<TextBlock>
+                        <Hyperlink
+							Click="Navigate_to_Website">http://www.yaplex.com/</Hyperlink>
+					</TextBlock>
+				</ribbon:RibbonGroup>
+			</ribbon:RibbonTab>
+
+		</ribbon:Ribbon>
+		<TextBox
+			x:Name="txtRegexExpression"
+			Grid.Row="1"
+			TextWrapping="Wrap"
+			VerticalScrollBarVisibility="Auto"
+			FontSize="16"
+			FontFamily="Comic Sans MS"
+			FontWeight="Normal"
+			FontStyle="Normal"
+			FontStretch="Normal"
+			KeyUp="OnDoRegexEvent">
+			<TextBox.CommandBindings>
+				<CommandBinding
+					Command='Replace'
+					Executed='ReplaceSelectionWithCommandParameter' />
+			</TextBox.CommandBindings>
+		</TextBox>
+		<GridSplitter
+			Grid.Row="2"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"
+			ResizeBehavior="PreviousAndNext"
+			Background="#FFBCBCBC"
+			ResizeDirection="Rows"></GridSplitter>
+
+		<WindowsFormsHost
+			Grid.Row="3">
+			<WinForms:RichTextBox
+				x:Name="richSourceText"></WinForms:RichTextBox>
+		</WindowsFormsHost>
+
+		<!--
+		<RichTextBox x:Name="richSourceText" Grid.Row="3" Style="{StaticResource ResourceKey=RichFields}" VerticalScrollBarVisibility="Auto" KeyUp="OnDoRegexEvent" FontSize="14" FontFamily="Arial"></RichTextBox>
+-->
+		<GridSplitter
+			Grid.Row="4"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"
+			ResizeBehavior="PreviousAndNext"
+			Background="#FFBCBCBC"
+			ResizeDirection="Rows"></GridSplitter>
+
+		<TextBox
+			x:Name="txtSplit"
+			Grid.Row="5"
+			Style="{StaticResource ResourceKey=TextFields}"
+			VerticalScrollBarVisibility="Auto"
+			IsReadOnly="True"
+			AcceptsReturn="True"
+			AcceptsTab="True"></TextBox>
+
+	</Grid>
+</ribbon:RibbonWindow>
