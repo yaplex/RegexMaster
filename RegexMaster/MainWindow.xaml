@@ -601,7 +601,7 @@
 				<ribbon:RibbonGroup>
 
 					<Label
-						Content="Design and development: Yaplex"
+						Content="Design and development: Alex Shapovalov"
 						Height="28"
 						HorizontalAlignment="Left" />
 					<TextBlock>
