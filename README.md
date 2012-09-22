@@ -3,4 +3,4 @@ Regex Master - Regular expression tester
 
 WPF application which you can use to learn and test regular expressions.
 
-![alt text] (http://i3.codeplex.com/Download?ProjectName=RegExMaster&DownloadId=222950)
+![regual expession tester] (http://www.yaplex.com/wp-content/uploads/2012/09/regex-master-screenshot.png "regual expession tester")
