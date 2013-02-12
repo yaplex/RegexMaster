@@ -15,6 +15,11 @@ Requirements
 * Visual studio 2010
 * Ribbons Control Library (included)
 
+Download lastest binaries
+-------------------------
+[Compiled binaries are available on SourgeForce hosting] (https://sourceforge.net/projects/regexmaster/)
+
+
 Screenshot
 ----------
 
