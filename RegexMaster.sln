@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexMaster", "RegexMaster\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaplex.RegexMaster.App", "Yaplex.RegexMaster.App\Yaplex.RegexMaster.App.csproj", "{18D7267A-7260-49A5-9779-8FA963244AF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaplex.RegexMaster.Business", "Yaplex.RegexMaster.Business\Yaplex.RegexMaster.Business.csproj", "{48131796-A17B-425E-8AA2-72FC040A5448}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,16 @@ Global
 		{18D7267A-7260-49A5-9779-8FA963244AF9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{18D7267A-7260-49A5-9779-8FA963244AF9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{18D7267A-7260-49A5-9779-8FA963244AF9}.Release|x86.ActiveCfg = Release|Any CPU
+		{48131796-A17B-425E-8AA2-72FC040A5448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48131796-A17B-425E-8AA2-72FC040A5448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48131796-A17B-425E-8AA2-72FC040A5448}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{48131796-A17B-425E-8AA2-72FC040A5448}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{48131796-A17B-425E-8AA2-72FC040A5448}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{48131796-A17B-425E-8AA2-72FC040A5448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48131796-A17B-425E-8AA2-72FC040A5448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48131796-A17B-425E-8AA2-72FC040A5448}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{48131796-A17B-425E-8AA2-72FC040A5448}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{48131796-A17B-425E-8AA2-72FC040A5448}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

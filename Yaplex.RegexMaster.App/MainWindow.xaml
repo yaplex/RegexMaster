@@ -3,6 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <TextBox x:Name="TxtPattern" HorizontalAlignment="Left" Height="70" Margin="10,12,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="497" TextChanged="TextBox_TextChanged"/>
+        <RichTextBox x:Name="RichTextToParce" HorizontalAlignment="Left" Height="209" Margin="10,100,0,0" VerticalAlignment="Top" Width="497">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Hello world from "/>
+                    <Italic>RichTextBox</Italic>
+                    <Run>!</Run>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
     </Grid>
 </Window>
