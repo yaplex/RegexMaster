@@ -3,15 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <TextBox x:Name="TxtPattern" HorizontalAlignment="Left" Height="70" Margin="10,12,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="497" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" Height="70" Margin="11,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="TextBox_TextChanged" Text="{Binding RegexPattern, UpdateSourceTrigger=PropertyChanged}" >
+        </TextBox>
         <RichTextBox x:Name="RichTextToParce" HorizontalAlignment="Left" Height="209" Margin="10,100,0,0" VerticalAlignment="Top" Width="497">
-            <FlowDocument>
+            
+<!--
+            <FlowDocument >
                 <Paragraph>
+                    <ItemsControl ></ItemsControl>
+~1~
                     <Run Text="Hello world from "/>
                     <Italic>RichTextBox</Italic>
                     <Run>!</Run>
+@1@
                 </Paragraph>
             </FlowDocument>
+-->
         </RichTextBox>
 
     </Grid>

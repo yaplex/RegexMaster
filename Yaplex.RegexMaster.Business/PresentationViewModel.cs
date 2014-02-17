@@ -20,7 +20,8 @@ namespace Yaplex.RegexMaster.Business
             }
         }
 
-        public FlowDocument Document { get; set; }
+
+        public FlowDocument SourceDocument { get; set; }
 
         #region INotifyPropertyChanged
 

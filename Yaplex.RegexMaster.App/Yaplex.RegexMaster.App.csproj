@@ -94,6 +94,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Yaplex.RegexMaster.Business\Yaplex.RegexMaster.Business.csproj">
+      <Project>{48131796-a17b-425e-8aa2-72fc040a5448}</Project>
+      <Name>Yaplex.RegexMaster.Business</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

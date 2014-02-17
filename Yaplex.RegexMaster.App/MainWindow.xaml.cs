@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using Yaplex.RegexMaster.Business;
 
 namespace Yaplex.RegexMaster.App
 {
@@ -10,9 +11,14 @@ namespace Yaplex.RegexMaster.App
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PresentationViewModel _vm;
         public MainWindow()
         {
             InitializeComponent();
+            var doc = new FlowDocument(new Paragraph(new Run("This is richbox!")));
+            _vm = new PresentationViewModel(){RegexPattern = "load from last use"};
+            DataContext = _vm;
+            RichTextToParce.Document = doc;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -22,9 +28,9 @@ namespace Yaplex.RegexMaster.App
 
         private void RunRegex()
         {
-            if (null == RichTextToParce) return;
+            if (!ApplicationReady()) return;
 
-            string regexPattern = TxtPattern.Text;
+            string regexPattern = _vm.RegexPattern;
             FlowDocument originalDoc = RichTextToParce.Document;
             string content = new TextRange(originalDoc.ContentStart, originalDoc.ContentEnd).Text;
             var selectionDoc = new FlowDocument();
@@ -36,9 +42,13 @@ namespace Yaplex.RegexMaster.App
             {
                 BuildSelection(content, selectionDoc, m);
                 m = m.NextMatch();
+                RichTextToParce.Document = selectionDoc;
             }
+        }
 
-            RichTextToParce.Document = selectionDoc;
+        private bool ApplicationReady()
+        {
+            return null != RichTextToParce;
         }
 
         private void BuildSelection(string content, FlowDocument selectionDoc, Match m)
