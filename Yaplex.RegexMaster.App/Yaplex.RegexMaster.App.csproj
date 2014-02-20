@@ -68,6 +68,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PresentationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,9 +96,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Yaplex.RegexMaster.Business\Yaplex.RegexMaster.Business.csproj">
+    <ProjectReference Include="..\Yaplex.RegexMaster.Business\Yaplex.RegexMaster.Core.csproj">
       <Project>{48131796-a17b-425e-8aa2-72fc040a5448}</Project>
-      <Name>Yaplex.RegexMaster.Business</Name>
+      <Name>Yaplex.RegexMaster.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

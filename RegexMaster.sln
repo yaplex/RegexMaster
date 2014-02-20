@@ -7,7 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexMaster", "RegexMaster\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaplex.RegexMaster.App", "Yaplex.RegexMaster.App\Yaplex.RegexMaster.App.csproj", "{18D7267A-7260-49A5-9779-8FA963244AF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaplex.RegexMaster.Business", "Yaplex.RegexMaster.Business\Yaplex.RegexMaster.Business.csproj", "{48131796-A17B-425E-8AA2-72FC040A5448}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaplex.RegexMaster.Core", "Yaplex.RegexMaster.Business\Yaplex.RegexMaster.Core.csproj", "{48131796-A17B-425E-8AA2-72FC040A5448}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yaplex.RegexMaster.Tests", "Yaplex.RegexMaster.Tests\Yaplex.RegexMaster.Tests.csproj", "{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{482921CC-7072-4F21-9F47-2A639F869563}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +58,16 @@ Global
 		{48131796-A17B-425E-8AA2-72FC040A5448}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{48131796-A17B-425E-8AA2-72FC040A5448}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{48131796-A17B-425E-8AA2-72FC040A5448}.Release|x86.ActiveCfg = Release|Any CPU
+		{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{59A47EF1-1F94-401F-BE89-BAA12BC5FA5C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

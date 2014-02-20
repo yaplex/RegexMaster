@@ -15,51 +15,22 @@ namespace Yaplex.RegexMaster.App
         public MainWindow()
         {
             InitializeComponent();
-            var doc = new FlowDocument(new Paragraph(new Run("This is richbox!")));
-            _vm = new PresentationViewModel(){RegexPattern = "load from last use"};
+            
+            _vm = new PresentationViewModel();
             DataContext = _vm;
+            var doc = new FlowDocument(new Paragraph(new Run(_vm.SourceText)));
             RichTextToParce.Document = doc;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            RunRegex();
+            _vm.Parse();
         }
 
-        private void RunRegex()
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!ApplicationReady()) return;
-
-            string regexPattern = _vm.RegexPattern;
-            FlowDocument originalDoc = RichTextToParce.Document;
-            string content = new TextRange(originalDoc.ContentStart, originalDoc.ContentEnd).Text;
-            var selectionDoc = new FlowDocument();
-
-            Match m = Regex.Match(content,
-                regexPattern);
-
-            while (m.Success)
-            {
-                BuildSelection(content, selectionDoc, m);
-                m = m.NextMatch();
-                RichTextToParce.Document = selectionDoc;
-            }
-        }
-
-        private bool ApplicationReady()
-        {
-            return null != RichTextToParce;
-        }
-
-        private void BuildSelection(string content, FlowDocument selectionDoc, Match m)
-        {
-            var p = new Paragraph();
-            p.Inlines.Add(new Run(content.Substring(0, m.Index)));
-            p.Inlines.Add(new Bold(new Run(content.Substring(m.Index, m.Length))));
-            p.Inlines.Add(new Run(content.Substring(m.Index+m.Length, content.Length-1-m.Index-m.Length)));
-
-            selectionDoc.Blocks.Add(p);
-
+            _vm.Parse();
+            RichTextToParce.Document = _vm.ParsedDocument;
         }
     }
 }

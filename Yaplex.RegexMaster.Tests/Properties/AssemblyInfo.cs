@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Yaplex.RegexMaster.Core")]
+[assembly: AssemblyTitle("Yaplex.RegexMaster.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Yaplex.RegexMaster.Core")]
+[assembly: AssemblyProduct("Yaplex.RegexMaster.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("06937418-da95-4a6c-9a3f-83c7daeba67a")]
+[assembly: Guid("ae7965a7-8da2-49dd-a34e-befd7b29cd45")]
 
 // Version information for an assembly consists of the following four values:
 //
