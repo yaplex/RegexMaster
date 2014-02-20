@@ -14,7 +14,7 @@ namespace Yaplex.RegexMaster.Tests
     public class Class1
     {
         [Test]
-        public void Should_Produce_Document_Simple_word()
+        public void Should_Produce_Document_One_Match()
         {
             var source = "Hello world from my \"hello world\" application";
             var pattern = "hello";
@@ -23,6 +23,19 @@ namespace Yaplex.RegexMaster.Tests
             Assert.AreEqual(source, vm.SourceText);
             Assert.AreEqual(pattern, vm.RegexPattern);
             Assert.AreEqual(source, new TextRange(vm.ParsedDocument.ContentStart, vm.ParsedDocument.ContentEnd).Text.Trim());
+        }
+
+        [Test]
+        public void Should_Produce_Document_Two_Match()
+        {
+            var source = "Hello world from my \"hello world\" application";
+            var pattern = "world";
+            var vm = new PresentationViewModel(){RegexPattern = pattern};
+            vm.Parse();
+            Assert.AreEqual(source, vm.SourceText);
+            Assert.AreEqual(pattern, vm.RegexPattern);
+            Assert.AreEqual(source, new TextRange(vm.ParsedDocument.ContentStart, vm.ParsedDocument.ContentEnd).Text.Trim());
+            
         }
     }
 }
