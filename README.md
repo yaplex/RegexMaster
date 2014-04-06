@@ -17,12 +17,14 @@ Requirements
 
 Download lastest binaries
 -------------------------
-[Compiled binaries are available on SourgeForce hosting] (https://sourceforge.net/projects/regexmaster/)
+[Compiled binaries of regular expression tester are available on my website] (http://yaplex.com/products/regex-master)
 
 
 Screenshot
 ----------
 
-![regual expession tester] (http://www.yaplex.com/wp-content/uploads/2012/09/regex-master-screenshot.png "regual expession tester")
+![regual expession tester] (http://yaplex.com/Media/Default/screenshots/regex-master-screenshot.png "regual expession tester")
 
-[software developer resume] (http://www.yaplex.com/developer-resume/)
+[software developer resume] (http://blog.yaplex.com/developer-resume/)
+
+Design and development by Alex Shapovalov, [.NET Developer](http://yaplex.com ".NET Developer").
