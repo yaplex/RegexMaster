@@ -17,14 +17,14 @@ Requirements
 
 Download lastest binaries
 -------------------------
-[Compiled binaries of regular expression tester are available on my website] (http://yaplex.com/products/regex-master)
+[Compiled binaries of regular expression tester are available on my website] (https://yaplex.com/products/regex-master)
 
 
 Screenshot
 ----------
 
-![regual expession tester] (http://yaplex.com/Media/Default/screenshots/regex-master-screenshot.png "regual expession tester")
+![regual expession tester] (https://yaplex.com/Media/Default/screenshots/regex-master-screenshot.png "regual expession tester")
 
-[software developer resume] (http://blog.yaplex.com/developer-resume/)
+[software developer resume] (https://yaplex.com/developer-resume)
 
-Design and development by Alex Shapovalov, [.NET Developer](http://yaplex.com ".NET Developer").
+Design and development by Alex Shapovalov, [.NET Developer](https://yaplex.com ".NET Developer").
