@@ -25,6 +25,4 @@ Screenshot
 
 ![regual expession tester] (https://yaplex.com/Media/Default/screenshots/regex-master-screenshot.png "regual expession tester")
 
-[software developer resume] (https://yaplex.com/resume)
-
-Design and development by Alex Shapovalov, [.NET Developer](https://yaplex.com ".NET Developer").
+Design and development by Alex Shapovalov, Senior [.NET Developer](https://yaplex.com ".NET Developer") in Toronto. Learn more about me from [.NET Developer resume](https://yaplex.com/resume ".NET developer resume").
