@@ -25,6 +25,6 @@ Screenshot
 
 ![regual expession tester] (https://yaplex.com/Media/Default/screenshots/regex-master-screenshot.png "regual expession tester")
 
-[software developer resume] (https://yaplex.com/developer-resume)
+[software developer resume] (https://yaplex.com/resume)
 
 Design and development by Alex Shapovalov, [.NET Developer](https://yaplex.com ".NET Developer").
