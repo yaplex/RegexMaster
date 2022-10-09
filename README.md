@@ -15,14 +15,5 @@ Requirements
 * Visual studio 2010
 * Ribbons Control Library (included)
 
-Download lastest binaries
--------------------------
-[Compiled binaries of regular expression tester are available on my website] (https://yaplex.com/products/regex-master)
 
-
-Screenshot
-----------
-
-![regual expession tester] (https://yaplex.com/Media/Default/screenshots/regex-master-screenshot.png "regual expession tester")
-
-Design and development by Alex Shapovalov, Senior [.NET Developer](https://yaplex.com ".NET Developer") in Toronto. Learn more about me from [.NET Developer resume](https://yaplex.com/resume ".NET developer resume").
+Design and development by Alex Shapovalov, Senior [full stack developer](https://www.yaplex.com) in Toronto.
